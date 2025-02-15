@@ -1,0 +1,59 @@
+.loginPage{
+    display: flex;
+    justify-content: center;
+    /* border: 0.1rem solid black;
+    border-radius: 0.5rem; */
+}
+.formblock{
+    position: absolute;
+    display: inline-block;
+    top: 50%;
+    height: 15em;
+    transform: translate(0%, -50%);
+    border: 0.1rem solid black;
+    border-radius: 0.5rem;
+    align-items: center ;
+    text-align: center  ;
+    
+    
+}
+.b-submit{
+    top: 60%;
+}
+#loginForm{
+    height: 15em;
+}
+.l-login{
+    text-decoration: underline;
+}
+.i-password{
+    border: 0.1rem solid black;
+    border-radius: 0.2rem;
+}
+
+.i-username{
+    border: 0.1rem solid black;
+    border-radius: 0.2rem;
+}
+.user-input{
+    margin: 1em;
+    padding-left: 0.1em;
+    padding-right: 0.1em;
+    padding-top: 0.1em;
+}
+.user-label{
+    margin: 1em;
+    margin-top: 1em;
+    padding-left: 0.1em;
+    padding-right: 0.1em;
+    padding-top: 2em;
+}
+
+.input-button{
+    margin: 0.5rem;
+    margin-top: 2em;
+    top: 70%;
+    padding-left: 0.1em;
+    padding-right: 0.1em;
+    padding-top: 0.3rem;
+}
