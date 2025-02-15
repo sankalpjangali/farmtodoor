@@ -1,0 +1,143 @@
+<% layout('layout') %> <!-- Extending the layout -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: 	
+            rgba(248,249,250,0.5);
+            background-image: url('../images/background.jpg');
+            /* Update path to your image */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            min-height: 100vh;
+
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            /* fixed instead of absolute to cover full scrolling */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+            z-index: -1;
+        }
+        @supports not ((backdrop-filter: blur(5px)) or (-webkit-backdrop-filter: blur(5px))) {
+    body::before {
+        background-color: rgba(248,249,250,0.9);
+    }
+}
+
+
+        .login-card {
+            background-color: rgba(255, 255, 255, 0.9);
+            /* Added transparency */
+            border-radius: 10px;
+            border: 1px solid #2b89e7;
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            margin: 100px auto;
+            position: relative;
+            /* Added */
+            z-index: 1;
+            /* Added to ensure it's above the blur */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            border-radius: 10px;
+            border: 1px solid #dee2e6;
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            margin: 100px auto;
+        }
+
+        .form-control {
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+            padding: 10px;
+        }
+
+        .btn-login {
+            background-color: #198754;
+            color: white;
+            border-radius: 20px;
+            padding: 10px;
+            width: 100%;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+        }
+
+        .remember-me input {
+            margin-right: 10px;
+        }
+
+        .forgot-password {
+            color: #198754;
+            text-decoration: none;
+        }
+
+        .sign-up-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .sign-up-link a {
+            color: #198754;
+            text-decoration: none;
+        }
+    </style>
+    </head>
+
+    <body>
+
+
+        <!-- Login Card -->
+        <div class="login-card">
+            <!-- Logo -->
+            <h2 class="text-center text-success mb-4">FreshFarm</h2>
+
+            <!-- Welcome Text -->
+            <p class="text-center text-muted mb-4">Welcome back!</p>
+
+            <!-- Email Input -->
+            <div class="mb-3">
+                <input type="email" class="form-control" placeholder="Email">
+            </div>
+
+            <!-- Password Input -->
+            <div class="mb-3">
+                <input type="password" class="form-control" placeholder="Password">
+            </div>
+
+            <!-- Remember Me and Forgot Password -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div class="remember-me">
+                    <input type="checkbox" id="rememberMe">
+                    <label for="rememberMe" class="text-muted">Remember me</label>
+                </div>
+                <a href="#" class="forgot-password">Forgot Password?</a>
+            </div>
+
+            <!-- Login Button -->
+            <button class="btn btn-login">Login</button>
+
+            <!-- Sign Up Link -->
+            <div class="sign-up-link">
+                <span class="text-muted">New to FreshFarm?</span>
+                <a href="#">Sign up</a>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+
+    </html>
