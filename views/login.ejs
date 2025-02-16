@@ -1,143 +1,382 @@
-<% layout('layout') %> <!-- Extending the layout -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<% layout('layout') %>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body {
-            background: 	
-            rgba(248,249,250,0.5);
-            background-image: url('../images/background.jpg');
-            /* Update path to your image */
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            position: relative;
-            min-height: 100vh;
-
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            /* fixed instead of absolute to cover full scrolling */
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: inherit;
-            -webkit-backdrop-filter: blur(5px);
-            backdrop-filter: blur(5px);
-            z-index: -1;
-        }
-        @supports not ((backdrop-filter: blur(5px)) or (-webkit-backdrop-filter: blur(5px))) {
-    body::before {
-        background-color: rgba(248,249,250,0.9);
-    }
+        .login-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    margin: 40px auto;  /* Added margin to create space from navbar */
 }
 
+.login-card {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
 
-        .login-card {
-            background-color: rgba(255, 255, 255, 0.9);
-            /* Added transparency */
-            border-radius: 10px;
-            border: 1px solid #2b89e7;
-            padding: 40px;
-            width: 100%;
-            max-width: 400px;
-            margin: 100px auto;
-            position: relative;
-            /* Added */
-            z-index: 1;
-            /* Added to ensure it's above the blur */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            background-color: white;
-            border-radius: 10px;
-            border: 1px solid #dee2e6;
-            padding: 40px;
-            width: 100%;
-            max-width: 400px;
-            margin: 100px auto;
-        }
+/* Rest of your login page specific CSS remains the same */
+.login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
 
-        .form-control {
-            border-radius: 5px;
-            border: 1px solid #ced4da;
-            padding: 10px;
-        }
+.login-header h1 {
+    font-size: 2rem;
+    color: #2c5282;
+    margin-bottom: 10px;
+}
 
-        .btn-login {
-            background-color: #198754;
-            color: white;
-            border-radius: 20px;
-            padding: 10px;
-            width: 100%;
-        }
+.login-header p {
+    color: #666;
+    font-size: 0.95rem;
+}
 
-        .remember-me {
-            display: flex;
-            align-items: center;
-        }
+.logo {
+    width: 80px;
+    height: 80px;
+    background: #48bb78;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
 
-        .remember-me input {
-            margin-right: 10px;
-        }
+.logo i {
+    font-size: 40px;
+    color: white;
+}
 
-        .forgot-password {
-            color: #198754;
-            text-decoration: none;
-        }
+/* Form styles */
+.form-group {
+    margin-bottom: 20px;
+}
 
-        .sign-up-link {
-            text-align: center;
-            margin-top: 20px;
-        }
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #4a5568;
+    font-weight: 500;
+}
 
-        .sign-up-link a {
-            color: #198754;
-            text-decoration: none;
-        }
+.input-group {
+    position: relative;
+}
+
+.input-group i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #a0aec0;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px 15px 12px 45px;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-input:focus {
+    border-color: #48bb78;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(72, 187, 120, 0.2);
+}
+
+.remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #4a5568;
+}
+
+.forgot-password {
+    color: #48bb78;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.login-button {
+    width: 100%;
+    padding: 12px;
+    background: #48bb78;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.login-button:hover {
+    background: #38a169;
+    transform: translateY(-2px);
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 25px 0;
+    color: #a0aec0;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.divider span {
+    padding: 0 10px;
+}
+
+.social-login {
+    display: flex;
+    gap: 10px;
+}
+
+.social-button {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    background: white;
+    color: #4a5568;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.social-button:hover {
+    background: #f7fafc;
+    transform: translateY(-2px);
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 25px;
+    color: #4a5568;
+}
+
+.signup-link a {
+    color: #48bb78;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+    .login-card {
+        padding: 30px 20px;
+    }
+
+    .social-login {
+        flex-direction: column;
+    }
+}
+.login-section {
+    background-color: #f0f5f0;
+    position: relative;
+    min-height: 80vh;
+    padding: 40px 0;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+        url('/images/farm-pattern.png'); /* You'll need to add this image */
+    background-size: cover;
+    background-position: center;
+}
+
+/* Add subtle moving leaves animation */
+/* .animated-leaves {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.leaf {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #48bb78;
+    opacity: 0.1;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    animation: float 15s infinite linear;
+}
+
+.leaf:nth-child(2n) {
+    animation-duration: 20s;
+    animation-delay: -2s;
+    left: 25%;
+}
+
+.leaf:nth-child(3n) {
+    animation-duration: 18s;
+    animation-delay: -4s;
+    left: 75%;
+}
+
+@keyframes float {
+    0% {
+        top: -20px;
+        transform: rotate(0deg);
+    }
+    100% {
+        top: 100%;
+        transform: rotate(360deg);
+    }
+}
+.login-section {
+    background: linear-gradient(135deg, #f0f5f0 0%, #e8f5e9 100%);
+    position: relative;
+    min-height: 80vh;
+    padding: 40px 0;
+}
+
+.wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%2348bb78' fill-opacity='0.1' d='M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,224C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.login-section {
+    background-color: #f0f5f0;
+    position: relative;
+    min-height: 80vh;
+    padding: 40px 0;
+    overflow: hidden;
+}
+
+.login-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: #48bb78;
+    border-radius: 50%;
+    opacity: 0.1;
+    transform: scale(2);
+}
+
+.login-section::after {
+    content: '';
+    position: absolute;
+    bottom: -50%;
+    left: -50%;
+    width: 100%;
+    height: 100%;
+    background: #2c5282;
+    border-radius: 50%;
+    opacity: 0.1;
+    transform: scale(2);
+}
+
+.login-container {
+    position: relative;
+    z-index: 1;
+} */
     </style>
-    </head>
-
-    <body>
-
-
-        <!-- Login Card -->
+</head>
+<body style="background-image: url('../images/login_background.jpeg') ; background-repeat: no-repeat;background-size: cover; background-position: center;
+    height: 100vh;">
+    <div class="login-container" >
+        <div class="animated-leaves">
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+        </div>
+        <!-- <div class="wave"></div> -->
         <div class="login-card">
-            <!-- Logo -->
-            <h2 class="text-center text-success mb-4">FreshFarm</h2>
-
-            <!-- Welcome Text -->
-            <p class="text-center text-muted mb-4">Welcome back!</p>
-
-            <!-- Email Input -->
-            <div class="mb-3">
-                <input type="email" class="form-control" placeholder="Email">
-            </div>
-
-            <!-- Password Input -->
-            <div class="mb-3">
-                <input type="password" class="form-control" placeholder="Password">
-            </div>
-
-            <!-- Remember Me and Forgot Password -->
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <div class="remember-me">
-                    <input type="checkbox" id="rememberMe">
-                    <label for="rememberMe" class="text-muted">Remember me</label>
+            <div class="login-header">
+                <div class="logo">
+                    <i class="fas fa-leaf"></i>
                 </div>
-                <a href="#" class="forgot-password">Forgot Password?</a>
+                <h1>Welcome Back</h1>
+                <p>Login to access your Fresh From Farms account</p>
+            </div>
+            <form action="/login" method="POST">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" name="password" class="form-input" placeholder="Enter your password" required>
+                    </div>
+                </div>
+
+                <div class="remember-forgot">
+                    <label class="remember-me">
+                        <input type="checkbox" name="remember">
+                        Remember me
+                    </label>
+                    <a href="/forgot-password" class="forgot-password">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="login-button">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Login
+                </button>
+            </form>
+
+            <div class="divider">
+                <span>or continue with</span>
             </div>
 
-            <!-- Login Button -->
-            <button class="btn btn-login">Login</button>
+            <div class="social-login">
+                <button class="social-button">
+                    <i class="fab fa-google"></i>
+                    Google
+                </button>
+                <button class="social-button">
+                    <i class="fab fa-facebook-f"></i>
+                    Facebook
+                </button>
+            </div>
 
-            <!-- Sign Up Link -->
-            <div class="sign-up-link">
-                <span class="text-muted">New to FreshFarm?</span>
-                <a href="#">Sign up</a>
+            <div class="signup-link">
+                Don't have an account? <a href="/signup">Sign up</a>
             </div>
         </div>
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    </body>
-
-    </html>
+    </div>
