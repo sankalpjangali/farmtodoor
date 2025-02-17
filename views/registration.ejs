@@ -1,0 +1,107 @@
+<!-- views/register.ejs -->
+<% layout('layout') %>
+<link rel="stylesheet" href="css/register.css">
+<div class="registration-container">
+    <div class="registration-card">
+        <!-- Left Side - Welcome Section -->
+        <div class="welcome-section">
+            <h2>Welcome to FreshFarm</h2>
+            <p>Join our community to get access to fresh, organic produce directly from local farmers.</p>
+            <ul class="benefits-list">
+                <li><i class="bi bi-check2"></i> Direct access to local farmers</li>
+                <li><i class="bi bi-check2"></i> Fresh, organic produce</li>
+                <li><i class="bi bi-check2"></i> Weekly special offers</li>
+                <li><i class="bi bi-check2"></i> Seasonal product updates</li>
+            </ul>
+        </div>
+
+        <!-- Right Side - Registration Form -->
+        <div class="form-section">
+            <h3>Create an Account</h3>
+            <form action="/register" method="POST" class="registration-form">
+                <!-- Full Name -->
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <div class="input-group">
+                        <span class="input-group-text">
+                            <i class="bi bi-person"></i>
+                        </span>
+                        <input type="text" id="fullName" name="fullName" class="form-control" placeholder="John Doe" required>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <div class="input-group">
+                        <span class="input-group-text">
+                            <i class="bi bi-envelope"></i>
+                        </span>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="johndoe@example.com" required>
+                    </div>
+                </div>
+
+                <!-- Phone -->
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <div class="input-group">
+                        <span class="input-group-text">
+                            <i class="bi bi-telephone"></i>
+                        </span>
+                        <input type="tel" id="phone" name="phone" class="form-control" placeholder="+1 (234) 567-8900" required>
+                    </div>
+                </div>
+
+                <!-- Address -->
+                <div class="form-group">
+                    <label for="address">Delivery Address</label>
+                    <div class="input-group">
+                        <span class="input-group-text">
+                            <i class="bi bi-geo-alt"></i>
+                        </span>
+                        <input type="text" id="address" name="address" class="form-control" placeholder="123 Street Name, City" required>
+                    </div>
+                </div>
+
+                <!-- Password -->
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-group">
+                        <span class="input-group-text">
+                            <i class="bi bi-lock"></i>
+                        </span>
+                        <input type="password" id="password" name="password" class="form-control" placeholder="••••••••" required>
+                    </div>
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <div class="input-group">
+                        <span class="input-group-text">
+                            <i class="bi bi-lock"></i>
+                        </span>
+                        <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" placeholder="••••••••" required>
+                    </div>
+                </div>
+
+                <!-- Terms and Conditions -->
+                <div class="form-check">
+                    <input type="checkbox" id="terms" name="terms" class="form-check-input" required>
+                    <label class="form-check-label" for="terms">
+                        I agree to the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a>
+                    </label>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-success w-100 mt-4">Create Account</button>
+
+                <!-- Login Link -->
+                <p class="text-center mt-4">
+                    Already have an account? <a href="/login" class="text-success">Login here</a>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+
