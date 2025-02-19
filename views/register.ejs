@@ -1,6 +1,9 @@
 <!-- views/register.ejs -->
 <% layout('layout') %>
 <link rel="stylesheet" href="css/register.css">
+<% if (alert) { %>
+    <%- include('alertbox',{alert:alert})  %>
+<% } %>
 <div class="registration-container">
     <div class="registration-card">
         <!-- Left Side - Welcome Section -->

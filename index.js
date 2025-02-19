@@ -1,5 +1,6 @@
 const express = require('express');
 const routeurl = require('./routes/routes');
+const session = require('express-session');
 const app = express();
 const path = require('path');
 const engine = require('ejs-mate');
@@ -12,6 +13,12 @@ app.set("views",path.resolve("./views"))// here you have to set where your views
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser());
+app.use(session({
+  secret: '123456', //this is creatd by us
+  resave: false,
+  saveUninitialized: true,
+}));
+
 app.use(express.static(path.join(__dirname, '/public')));// we are setting the public folder as static folder and here we are using the path module to join the current directory with the public folder
 app.use('/',routeurl)
 app.listen(3000, () => {

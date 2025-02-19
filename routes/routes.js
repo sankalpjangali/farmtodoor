@@ -2,7 +2,7 @@ const express=require('express');
 const app=express();
 const path=require("path");
 const routeurl=express.Router();
-const {homepagerender,userlogin}=require("../controller/user")
+const {homepagerender,userlogin,userregister}=require("../controller/user")
 routeurl.get('/',(req,res)=>{
     res.render('heros.ejs',{title:'heros Page'});
 });
@@ -10,8 +10,12 @@ routeurl.get('/login',(req,res)=>{
     res.render('login.ejs',{title:'Login Page'});
 });
 routeurl.get('/register',(req,res)=>{
-    res.render('registration.ejs',{title:'register Page'});
+    res.render('register.ejs',{title:'register Page',alert:null});
 });
+routeurl.get('/alert',(req,res)=>{
+    res.render('alertbox.ejs',{title:'register Page'});
+});
+routeurl.post('/register',userregister);
 routeurl.post('/login',userlogin);
 routeurl.get('/product',(req,res)=>{
     res.render('products.ejs',{title:'product Page'});
