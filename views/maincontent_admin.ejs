@@ -1,0 +1,45 @@
+<%- layout('sidebar_admin.ejs') %>
+    <!-- Main Content -->
+    <main class="flex-1 p-6">
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <% stats.forEach(function(stat) { %>
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-gray-500 text-sm">
+                        <%= stat.title %>
+                    </h3>
+                    <div class="flex items-end gap-2 mt-2">
+                        <span class="text-2xl font-semibold">
+                            <%= stat.value %>
+                        </span>
+                        <span class="text-sm <%= stat.change >= 0 ? 'text-green-500' : 'text-red-500' %>">
+                            <%= stat.change>= 0 ? '+' : '' %><%= stat.change %>%
+                        </span>
+                    </div>
+                </div>
+                <% }); %>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="mt-8 bg-white rounded-lg shadow p-6">
+            <h2 class="text-lg font-semibold mb-4">Recent Activity</h2>
+            <div class="space-y-4">
+                <% activities.forEach(function(activity) { %>
+                    <div class="flex items-start gap-4 border-b pb-4">
+                        <div class="w-2 h-2 mt-2 rounded-full bg-blue-500"></div>
+                        <div class="flex-1">
+                            <h4 class="font-medium">
+                                <%= activity.title %>
+                            </h4>
+                            <p class="text-gray-500 text-sm">
+                                <%= activity.description %>
+                            </p>
+                            <span class="text-gray-400 text-xs">
+                                <%= activity.time %>
+                            </span>
+                        </div>
+                    </div>
+                    <% }); %>
+            </div>
+        </div>
+    </main>
