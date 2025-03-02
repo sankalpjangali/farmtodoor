@@ -1,6 +1,176 @@
 <% layout('layout') %>  
 <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
-
+<style>
+    .scroll-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      cursor: pointer;
+      z-index: 5;
+    }
+    .scrolling-products {
+      padding: 40px 0;
+      position: relative;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 30px;
+      position: relative;
+    }
+    
+    .section-title h2 {
+      font-size: 2rem;
+      color: #333;
+    }
+    
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70px;
+      height: 3px;
+      background-color: #198754;
+    }
+    
+    .scroll-controls {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 20px;
+    }
+    
+    .scroll-button {
+      background-color: #ffffff;
+      border: 2px solid #198754;
+      color: #198754;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      margin-left: 10px;
+      transition: all 0.3s ease;
+    }
+    
+    .scroll-button:hover {
+      background-color: #198754;
+      color: white;
+    }
+    
+    .products-carousel {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding: 10px 0;
+      scrollbar-width: none; /* For Firefox */
+      -ms-overflow-style: none; /* For Internet Explorer and Edge */
+    }
+    
+    .products-carousel::-webkit-scrollbar {
+      display: none; /* For Chrome, Safari and Opera */
+    }
+    
+    .product-card {
+      min-width: 250px;
+      margin-right: 20px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      background-color: white;
+      transition: transform 0.3s ease;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .product-image {
+      height: 180px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    
+    .product-farm {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: rgba(25, 135, 84, 0.9);
+      color: white;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+    
+    .product-details {
+      padding: 15px;
+    }
+    
+    .product-name {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #333;
+    }
+    
+    .product-price {
+      color: #198754;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    
+    .product-info {
+      display: flex;
+      justify-content: space-between;
+      color: #777;
+      font-size: 0.9rem;
+    }
+    
+    .add-cart-btn {
+      background-color: #198754;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      width: 100%;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    .add-cart-btn:hover {
+      background-color: #146c43;
+    }
+    
+    /* Categories section */
+    .categories {
+      padding: 40px 0;
+    }
+    
+    .category-cards {
+      display: grid;
+    }
+    
+    .scroll-left {
+      left: 10px;
+    }
+    
+    .scroll-right {
+      right: 10px;
+    }
+</style>
  <!-- Hero Section -->
  <section class="hero-section text-center" style="background-image: url('../images/background_login.webp') ; background-repeat: no-repeat;background-size: cover; background-position: center; width: 100%;
     height: 94vh;
@@ -44,3 +214,137 @@
         </button>
     </div>
 </section>
+<section class="scrolling-products">
+    <div class="container">
+      <div class="section-title">
+        <h2>Featured Products</h2>
+      </div>
+      
+      <div class="scroll-controls">
+        <button class="scroll-button" onclick="document.getElementById('products-carousel').scrollLeft -= 300">←</button>
+        <button class="scroll-button" onclick="document.getElementById('products-carousel').scrollLeft += 300">→</button>
+      </div>
+      
+      <div class="products-carousel" id="products-carousel">
+        <div class="product-card">
+          <div class="product-image" style="background-image: url('/api/placeholder/250/180')">
+            <div class="product-farm">Green Valley Farm</div>
+          </div>
+          <div class="product-details">
+            <div class="product-name">Organic Tomatoes</div>
+            <div class="product-price">$4.99 / lb</div>
+            <div class="product-info">
+              <span>Fresh Harvest</span>
+              <span>In Stock</span>
+            </div>
+            <button class="add-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+        
+        <div class="product-card">
+          <div class="product-image" style="background-image: url('/api/placeholder/250/180')">
+            <div class="product-farm">Sunny Meadows</div>
+          </div>
+          <div class="product-details">
+            <div class="product-name">Fresh Strawberries</div>
+            <div class="product-price">$5.99 / basket</div>
+            <div class="product-info">
+              <span>New Arrival</span>
+              <span>Limited</span>
+            </div>
+            <button class="add-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+        
+        <div class="product-card">
+          <div class="product-image" style="background-image: url('/api/placeholder/250/180')">
+            <div class="product-farm">Heritage Dairy</div>
+          </div>
+          <div class="product-details">
+            <div class="product-name">Artisanal Cheese</div>
+            <div class="product-price">$7.50 / 8oz</div>
+            <div class="product-info">
+              <span>Award-winning</span>
+              <span>In Stock</span>
+            </div>
+            <button class="add-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+        
+        <div class="product-card">
+          <div class="product-image" style="background-image: url('/api/placeholder/250/180')">
+            <div class="product-farm">Valley Orchard</div>
+          </div>
+          <div class="product-details">
+            <div class="product-name">Honey Crisp Apples</div>
+            <div class="product-price">$3.99 / lb</div>
+            <div class="product-info">
+              <span>Just Picked</span>
+              <span>In Stock</span>
+            </div>
+            <button class="add-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+        
+        <div class="product-card">
+          <div class="product-image" style="background-image: url('/api/placeholder/250/180')">
+            <div class="product-farm">Riverside Ranch</div>
+          </div>
+          <div class="product-details">
+            <div class="product-name">Free-Range Eggs</div>
+            <div class="product-price">$6.50 / dozen</div>
+            <div class="product-info">
+              <span>Organic Feed</span>
+              <span>In Stock</span>
+            </div>
+            <button class="add-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+        
+        <div class="product-card">
+          <div class="product-image" style="background-image: url('/api/placeholder/250/180')">
+            <div class="product-farm">Mountain Honey</div>
+          </div>
+          <div class="product-details">
+            <div class="product-name">Raw Wildflower Honey</div>
+            <div class="product-price">$12.99 / jar</div>
+            <div class="product-info">
+              <span>Unprocessed</span>
+              <span>Limited</span>
+            </div>
+            <button class="add-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+        
+        <div class="product-card">
+          <div class="product-image" style="background-image: url('/api/placeholder/250/180')">
+            <div class="product-farm">Fresh Fields</div>
+          </div>
+          <div class="product-details">
+            <div class="product-name">Fresh Spinach</div>
+            <div class="product-price">$3.49 / bunch</div>
+            <div class="product-info">
+              <span>Just Harvested</span>
+              <span>In Stock</span>
+            </div>
+            <button class="add-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+        
+        <div class="product-card">
+          <div class="product-image" style="background-image: url('/api/placeholder/250/180')">
+            <div class="product-farm">Valley Vineyard</div>
+          </div>
+          <div class="product-details">
+            <div class="product-name">Red Wine Grapes</div>
+            <div class="product-price">$8.99 / lb</div>
+            <div class="product-info">
+              <span>Premium</span>
+              <span>Seasonal</span>
+            </div>
+            <button class="add-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

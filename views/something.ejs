@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm Fresh Products</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #ffffff;
+            color: #333;
+            /* padding: 20px; */
+        }
+        
+        .product-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 20px 0;
+        }
+        
+        .product-image {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .product-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .product-details {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .farm-badge {
+            display: inline-block;
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+        
+        .product-title {
+            font-size: 2rem;
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+        
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .price-per-unit {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .product-description {
+            line-height: 1.6;
+            margin-bottom: 25px;
+            color: #555;
+        }
+        
+        .highlight-box {
+            background-color: #f1f8e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin-bottom: 25px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .highlight-box h3 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+        
+        .highlight-box ul {
+            padding-left: 20px;
+        }
+        
+        .highlight-box li {
+            margin-bottom: 8px;
+        }
+        
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .quantity-selector button {
+            width: 40px;
+            height: 40px;
+            background-color: #e8f5e9;
+            border: 1px solid #4caf50;
+            color: #2e7d32;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        
+        .quantity-selector input {
+            width: 60px;
+            height: 40px;
+            text-align: center;
+            border: 1px solid #4caf50;
+            border-left: none;
+            border-right: none;
+            font-size: 1rem;
+        }
+        
+        .add-to-cart {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .add-to-cart:hover {
+            background-color: #2e7d32;
+        }
+        
+        .farmer-info {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f1f8e9;
+            border-radius: 8px;
+        }
+        
+        .farmer-info h3 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+        
+        .related-products {
+            margin-top: 50px;
+        }
+        
+        .related-products h2 {
+            color: #2e7d32;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+        
+        .product-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .product-card-content {
+            padding: 15px;
+        }
+        
+        .product-card h3 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+        
+        .product-card .price {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .organic-badge {
+            background-color: #4caf50;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="product-container">
+        <div class="product-image">
+            <img src="/api/placeholder/600/600" alt="Fresh Organic Strawberries">
+        </div>
+        
+        <div class="product-details">
+            <span class="farm-badge">Green Valley Farm</span>
+            <h1 class="product-title">Organic Strawberries</h1>
+            <p class="product-price">$4.99 <span class="price-per-unit">/ 250g box</span></p>
+            
+            <p class="product-description">
+                These sweet, juicy strawberries are harvested at peak ripeness just 24 hours before delivery. 
+                Grown using organic farming practices, they're free from pesticides and chemical fertilizers, 
+                bringing you the pure taste of summer in every bite.
+            </p>
+            
+            <div class="highlight-box">
+                <h3>Why You'll Love It</h3>
+                <ul>
+                    <li>Harvested at peak ripeness for maximum flavor</li>
+                    <li>100% certified organic</li>
+                    <li>Rich in vitamins C and antioxidants</li>
+                    <li>Sourced locally from Green Valley Farm (30km away)</li>
+                    <li>Perfect for fresh eating, desserts, or preserves</li>
+                </ul>
+            </div>
+            
+            <div class="quantity-selector">
+                <button>-</button>
+                <input type="number" value="1" min="1">
+                <button>+</button>
+            </div>
+            
+            <button class="add-to-cart">Add to Basket</button>
+            
+            <div class="farmer-info">
+                <h3>Meet Your Farmer</h3>
+                <p>
+                    These strawberries are grown by the Johnson family at Green Valley Farm. They've been 
+                    growing berries using sustainable practices for over 20 years, focusing on soil health 
+                    and biodiversity to produce the most flavorful fruit possible.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="related-products">
+        <h2>You Might Also Like</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <img src="/api/placeholder/300/180" alt="Fresh Blueberries">
+                <div class="product-card-content">
+                    <span class="organic-badge">Organic</span>
+                    <h3>Blueberries</h3>
+                    <p class="price">$3.99 / 125g</p>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <img src="/api/placeholder/300/180" alt="Farm Fresh Eggs">
+                <div class="product-card-content">
+                    <span class="organic-badge">Free-range</span>
+                    <h3>Farm Fresh Eggs</h3>
+                    <p class="price">$5.49 / dozen</p>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <img src="/api/placeholder/300/180" alt="Organic Spinach">
+                <div class="product-card-content">
+                    <span class="organic-badge">Organic</span>
+                    <h3>Baby Spinach</h3>
+                    <p class="price">$3.29 / 200g</p>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <img src="/api/placeholder/300/180" alt="Raw Honey">
+                <div class="product-card-content">
+                    <span class="organic-badge">Raw</span>
+                    <h3>Wildflower Honey</h3>
+                    <p class="price">$7.99 / 340g</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -8,8 +8,10 @@ const user = require("../model/user");
 const { title } = require("process");
 const farmer = require("../model/farmer");
 app.set("views",path.resolve("./views"))
-async function homepagerender(req,res){
-    res.render("login",{title:"login page",alert: null})
+
+async function homepage(req,res){
+    const farmer1=await farmer.find()
+    res.render("homepage",{title:"homepage",farmers:farmer1})
 }
 async function farmerregistration(req,res){
     try{
@@ -92,11 +94,12 @@ async function userregister(req,res){
 }
 
 module.exports = {
-    homepagerender,
+    
     userlogin,
     userregister,
     farmerregistration,
     farmerdetails,
-    productdetail
+    productdetail,
+    homepage
 };
    

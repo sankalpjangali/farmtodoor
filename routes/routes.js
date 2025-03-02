@@ -2,7 +2,7 @@ const express=require('express');
 const app=express();
 const path=require("path");
 const routeurl=express.Router();
-const {homepagerender,userlogin,userregister,farmerregistration,farmerdetails,productdetail}=require("../controller/user")
+const {homepage,userlogin,userregister,farmerregistration,farmerdetails,productdetail}=require("../controller/user")
 routeurl.get('/',(req,res)=>{
     res.render('heros.ejs',{title:'heros Page'});
 });
@@ -24,9 +24,7 @@ routeurl.get('/alert',(req,res)=>{
 routeurl.post('/register',userregister);
 routeurl.post('/login',userlogin);
 routeurl.get('/product',productdetail);
-routeurl.get('/homepage',(req,res)=>{
-    res.render('homepage.ejs',{title:'homepage Page'});
-});
+routeurl.get('/homepage',homepage);
 routeurl.get('/farmers/registration',(req,res)=>{
     res.render('farmers_registration.ejs',{title:'homepage Page'});
 });
