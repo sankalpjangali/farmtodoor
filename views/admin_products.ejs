@@ -1,0 +1,47 @@
+
+    <%- layout('sidebar_admin') %>
+    <!-- Search Bar -->
+<body>
+    <div class="search-bar">
+      <input type="text" placeholder="Search products...">
+      <button>Search</button>
+    </div>
+
+    <!-- Product List Table -->
+    <table class="product-table">
+      <thead>
+        <tr>
+          <th>Product ID</th>
+          <th>Product Name</th>
+          <th>Category</th>
+          <th>Price</th>
+          <th>Stock</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% products.forEach(product => { %>
+          <tr>
+            <td><%= product.id %></td>
+            <td><%= product.name %></td>
+            <td><%= product.category %></td>
+            <td><%= product.price %></td>
+            <td><%= product.stock %></td>
+            <td>
+              <button>Edit</button>
+              <button>Delete</button>
+              <button>View Details</button>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+
+    <!-- Pagination -->
+    <div class="pagination">
+      <button>Previous</button>
+      <span>Page 1 of 5</span>
+      <button>Next</button>
+    </div>
+  </div>
+</body>

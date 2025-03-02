@@ -226,9 +226,10 @@
 
         <div class="farmers-grid">
             <% farmers.forEach(farmer => { %>
+                 
                 <div class="farmer-card">
                     <div class="farmer-image-container">
-                        <img src="<%= farmer.image %>" alt="<%= farmer.name %>" class="farmer-image">
+                        <img src="<%= farmer.image %>" alt="<%= farmer.first_name %>" class="farmer-image">
                         <div class="rating-badge">
                             <i class="fas fa-star" style="color: #f6e05e;"></i>
                             <%= farmer.rating %>
@@ -236,10 +237,10 @@
                     </div>
                     <div class="farmer-info">
                         <div class="farmer-header">
-                            <h2 class="farmer-name"><%= farmer.name %></h2>
+                            <h2 class="farmer-name"><%= farmer.first_name %></h2>
                             <div class="location">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <%= farmer.location %> • <%= farmer.experience %>
+                                <%= farmer.address %> • <%= farmer.experience %>
                             </div>
                         </div>
                         
@@ -249,6 +250,7 @@
                                 Available Products
                             </h3>
                             <div class="product-list">
+                            
                                 <% farmer.products.forEach(product => { %>
                                     <div class="product-item">
                                         <span class="product-name">

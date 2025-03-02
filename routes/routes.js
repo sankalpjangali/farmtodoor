@@ -2,12 +2,12 @@ const express=require('express');
 const app=express();
 const path=require("path");
 const routeurl=express.Router();
-const {homepagerender,userlogin,userregister}=require("../controller/user")
+const {homepagerender,userlogin,userregister,farmerregistration,farmerdetails,productdetail}=require("../controller/user")
 routeurl.get('/',(req,res)=>{
     res.render('heros.ejs',{title:'heros Page'});
 });
 routeurl.get('/login',(req,res)=>{
-    res.render('login.ejs',{title:'Login Page'});
+    res.render('login.ejs',{title:'Login Page',alert:null});
 });
 routeurl.get('/admin',(req,res)=>{
     res.render('admin.ejs',{title:'Login Page'});
@@ -23,15 +23,17 @@ routeurl.get('/alert',(req,res)=>{
 });
 routeurl.post('/register',userregister);
 routeurl.post('/login',userlogin);
-routeurl.get('/product',(req,res)=>{
-    res.render('products.ejs',{title:'product Page'});
-});
+routeurl.get('/product',productdetail);
 routeurl.get('/homepage',(req,res)=>{
     res.render('homepage.ejs',{title:'homepage Page'});
 });
 routeurl.get('/farmers/registration',(req,res)=>{
     res.render('farmers_registration.ejs',{title:'homepage Page'});
 });
+routeurl.get('/product/addtocart',(req,res)=>{
+    res.render('addtocart.ejs',{title:'Cart Page'});
+});
+routeurl.post('/farmers/registration',farmerregistration);
 routeurl.get('/admin/dashboard', (req, res) => {
     res.render('maincontent_admin.ejs', {
         users: {
@@ -98,58 +100,5 @@ routeurl.get('/admin/users', (req, res) => {
         
     });
 });
-routeurl.get('/farmer',(req,res)=>{
-    res.render('farmers.ejs',{title:'farmers Page',  farmers : [
-        {
-            name: "Rajesh Kumar",
-            location: "Maharashtra",
-            experience: "15 years",
-            products: [
-                { name: "Tomatoes", price: "₹40/kg", inStock: true },
-                { name: "Potatoes", price: "₹30/kg", inStock: true },
-                { name: "Onions", price: "₹25/kg", inStock: false }
-            ],
-            rating: 4.5,
-            image: "/path/to/farmer-image.jpg" // Add the path to the image
-        },
-        {
-            name: "Rajesh Kumar",
-            location: "Maharashtra",
-            experience: "15 years",
-            products: [
-                { name: "Tomatoes", price: "₹40/kg", inStock: true },
-                { name: "Potatoes", price: "₹30/kg", inStock: true },
-                { name: "Onions", price: "₹25/kg", inStock: false }
-            ],
-            rating: 4.5,
-            image: "/path/to/farmer-image.jpg" // Add the path to the image
-        },
-        {
-            name: "Rajesh Kumar",
-            location: "Maharashtra",
-            experience: "15 years",
-            products: [
-                { name: "Tomatoes", price: "₹40/kg", inStock: true },
-                { name: "Potatoes", price: "₹30/kg", inStock: true },
-                { name: "Onions", price: "₹25/kg", inStock: false }
-            ],
-            rating: 4.5,
-            image: "/path/to/farmer-image.jpg" // Add the path to the image
-        },
-        {
-            name: "Rajesh Kumar",
-            location: "Maharashtra",
-            experience: "15 years",
-            products: [
-                { name: "Tomatoes", price: "₹40/kg", inStock: true },
-                { name: "Potatoes", price: "₹30/kg", inStock: true },
-                { name: "Onions", price: "₹25/kg", inStock: false }
-            ],
-            rating: 4.5,
-            image: "/path/to/farmer-image.jpg" // Add the path to the image
-        },
-    
-
-    ]});
-});
+routeurl.get('/farmer',farmerdetails);
 module.exports=routeurl;
