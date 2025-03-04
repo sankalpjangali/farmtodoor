@@ -1,11 +1,12 @@
 const express=require('express');
 const app=express();
+const mongoose = require('mongoose');
 const path=require("path");
 const routeurl=express.Router();
-const {homepage,userlogin,userregister,farmerregistration,farmerdetails,productdetail}=require("../controller/user")
-routeurl.get('/',(req,res)=>{
-    res.render('heros.ejs',{title:'heros Page'});
-});
+const farmer = require("../model/farmer");
+const {homepage,userlogin,userregister,farmerregistration,farmerdetails,productdetail,heros_product}=require("../controller/user");
+// const farmer = require('../model/farmer');
+routeurl.get('/',heros_product);
 routeurl.get('/login',(req,res)=>{
     res.render('login.ejs',{title:'Login Page',alert:null});
 });
@@ -27,6 +28,26 @@ routeurl.get('/product',productdetail);
 routeurl.get('/homepage',homepage);
 routeurl.get('/farmers/registration',(req,res)=>{
     res.render('farmers_registration.ejs',{title:'homepage Page'});
+});
+
+routeurl.get('/something',async (req,res)=>{
+    const productId=req.query.productId
+    // const productId = req.params.productId; // This should now have the correct value
+    // console.log('Product ID:', typeof(productId)); 
+    // const productId = '67c68d6c48cdbf1acd9189e5';
+    const farmer1 = await farmer.findOne({ 'products._id': new mongoose.Types.ObjectId(productId) });// Replace the root with the product
+    
+    const resultfarmer = await farmer.findOne(
+        { 'products._id': productId }, // Query to find the farmer with the specific product ID
+        { 'products.$': 1 } // Projection to return only the matched product
+    );
+    // print(resultfarmer.products.image)
+    // const product1= farmer1?.products?.id(req.params.productId);
+    //  console.log(farmer1.products)
+     console.log(resultfarmer)
+    //  console.log(farmer1)
+    res.render('something.ejs',{title:'cart Page',product:farmer1,farmer:resultfarmer});
+
 });
 routeurl.get('/product/addtocart',(req,res)=>{
     res.render('addtocart.ejs',{title:'Cart Page'});

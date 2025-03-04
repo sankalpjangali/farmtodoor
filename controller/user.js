@@ -34,7 +34,14 @@ async function productdetail(req,res){
     const farmer1=await farmer.find()
     res.render("products",{title:"productdetails",farmers:farmer1})
     }
-    
+async function farmerdetailone(req,res){
+    const farmer1=await farmer.find()
+    res.render("products",{title:"productdetails",farmers:farmer1})
+    }
+async function heros_product(req,res){
+    const farmer1=await farmer.find()
+    res.render("heros",{title:"heros",farmers:farmer1})
+    }
 
 
 async function userlogin(req,res){
@@ -100,6 +107,7 @@ module.exports = {
     farmerregistration,
     farmerdetails,
     productdetail,
-    homepage
+    homepage,
+    heros_product
 };
    

@@ -276,7 +276,7 @@
                         <span class="price">$<%= product.price %></span>
                         <span class="unit">/ 250g box</span>
                     </div>
-                    <button class="add-button">+</button>
+                    <button class="add-button"  data-product-id="<%= product._id %>">+</button>
                 </div>
             </div>
         </div>
@@ -286,4 +286,14 @@
     
     
 </body>
+<script>
+    document.querySelectorAll('.add-button').forEach(button => {
+        button.addEventListener('click', function () {
+            // Get the product ID from the data attribute
+            const productId = this.getAttribute('data-product-id');
+            // Redirect to the other page with the product ID as a query parameter
+            window.location.href = `/something?productId=${productId}`;
+        });
+    });
+</script>
 </html>

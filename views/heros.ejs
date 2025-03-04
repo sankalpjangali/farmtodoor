@@ -178,7 +178,7 @@
     <div class="container" style="text-align: center; top:40vh; position: relative; color:white; font-weight: bold;">
         <h1 class="display-4"style=" text-align:center; font-weight:bold " >Fresh from Farm to Your Table</h1>
         <p class="lead ">Support local farmers. Eat fresh. Live healthy.</p>
-        <a href="#" class="btn btn-success btn-lg" >Shop Now</a>
+        <a href="/product" class="btn btn-success btn-lg" >Shop Now</a>
     </div>  
 </section>
 
@@ -226,125 +226,27 @@
       </div>
       
       <div class="products-carousel" id="products-carousel">
+        <% farmers.forEach(farmer => { %>
+          <% farmer.products.forEach(product => { %>
         <div class="product-card">
-          <div class="product-image" style="background-image: url('/api/placeholder/250/180')">
-            <div class="product-farm">Green Valley Farm</div>
+          
+          <div class="product-image" style="background-image: url('<%= product.image %>')">
+            <div class="product-farm"><%= farmer.first_name %></div>
           </div>
           <div class="product-details">
-            <div class="product-name">Organic Tomatoes</div>
-            <div class="product-price">$4.99 / lb</div>
+            <div class="product-name"><%= product.name %></div>
+            <div class="product-price">$<%= product.price %></div>
             <div class="product-info">
               <span>Fresh Harvest</span>
               <span>In Stock</span>
             </div>
-            <button class="add-cart-btn">Add to Cart</button>
+            <a href="/product">
+            <button class="add-cart-btn" src="/product">Add to Cart</button>
+          </a>
           </div>
-        </div>
         
-        <div class="product-card">
-          <div class="product-image" style="background-image: url('/api/placeholder/250/180')">
-            <div class="product-farm">Sunny Meadows</div>
-          </div>
-          <div class="product-details">
-            <div class="product-name">Fresh Strawberries</div>
-            <div class="product-price">$5.99 / basket</div>
-            <div class="product-info">
-              <span>New Arrival</span>
-              <span>Limited</span>
-            </div>
-            <button class="add-cart-btn">Add to Cart</button>
-          </div>
         </div>
+        <% }) %>
+        <% }) %>
         
-        <div class="product-card">
-          <div class="product-image" style="background-image: url('/api/placeholder/250/180')">
-            <div class="product-farm">Heritage Dairy</div>
-          </div>
-          <div class="product-details">
-            <div class="product-name">Artisanal Cheese</div>
-            <div class="product-price">$7.50 / 8oz</div>
-            <div class="product-info">
-              <span>Award-winning</span>
-              <span>In Stock</span>
-            </div>
-            <button class="add-cart-btn">Add to Cart</button>
-          </div>
-        </div>
-        
-        <div class="product-card">
-          <div class="product-image" style="background-image: url('/api/placeholder/250/180')">
-            <div class="product-farm">Valley Orchard</div>
-          </div>
-          <div class="product-details">
-            <div class="product-name">Honey Crisp Apples</div>
-            <div class="product-price">$3.99 / lb</div>
-            <div class="product-info">
-              <span>Just Picked</span>
-              <span>In Stock</span>
-            </div>
-            <button class="add-cart-btn">Add to Cart</button>
-          </div>
-        </div>
-        
-        <div class="product-card">
-          <div class="product-image" style="background-image: url('/api/placeholder/250/180')">
-            <div class="product-farm">Riverside Ranch</div>
-          </div>
-          <div class="product-details">
-            <div class="product-name">Free-Range Eggs</div>
-            <div class="product-price">$6.50 / dozen</div>
-            <div class="product-info">
-              <span>Organic Feed</span>
-              <span>In Stock</span>
-            </div>
-            <button class="add-cart-btn">Add to Cart</button>
-          </div>
-        </div>
-        
-        <div class="product-card">
-          <div class="product-image" style="background-image: url('/api/placeholder/250/180')">
-            <div class="product-farm">Mountain Honey</div>
-          </div>
-          <div class="product-details">
-            <div class="product-name">Raw Wildflower Honey</div>
-            <div class="product-price">$12.99 / jar</div>
-            <div class="product-info">
-              <span>Unprocessed</span>
-              <span>Limited</span>
-            </div>
-            <button class="add-cart-btn">Add to Cart</button>
-          </div>
-        </div>
-        
-        <div class="product-card">
-          <div class="product-image" style="background-image: url('/api/placeholder/250/180')">
-            <div class="product-farm">Fresh Fields</div>
-          </div>
-          <div class="product-details">
-            <div class="product-name">Fresh Spinach</div>
-            <div class="product-price">$3.49 / bunch</div>
-            <div class="product-info">
-              <span>Just Harvested</span>
-              <span>In Stock</span>
-            </div>
-            <button class="add-cart-btn">Add to Cart</button>
-          </div>
-        </div>
-        
-        <div class="product-card">
-          <div class="product-image" style="background-image: url('/api/placeholder/250/180')">
-            <div class="product-farm">Valley Vineyard</div>
-          </div>
-          <div class="product-details">
-            <div class="product-name">Red Wine Grapes</div>
-            <div class="product-price">$8.99 / lb</div>
-            <div class="product-info">
-              <span>Premium</span>
-              <span>Seasonal</span>
-            </div>
-            <button class="add-cart-btn">Add to Cart</button>
-          </div>
-        </div>
-      </div>
-    </div>
   </section>

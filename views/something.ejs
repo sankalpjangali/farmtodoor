@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farm Fresh Products</title>
+<% layout('layout') %>
     <style>
         * {
             margin: 0;
@@ -212,13 +207,15 @@
     </style>
 </head>
 <body>
+    
     <div class="product-container">
-        <div class="product-image">
-            <img src="/api/placeholder/600/600" alt="Fresh Organic Strawberries">
-        </div>
         
+        <div class="product-image">
+            <img src=" <%= farmer.products.image %>" alt="Fresh Organic Strawberries">
+        </div>
+
         <div class="product-details">
-            <span class="farm-badge">Green Valley Farm</span>
+            <span class="farm-badge"><%= product.name %></span>
             <h1 class="product-title">Organic Strawberries</h1>
             <p class="product-price">$4.99 <span class="price-per-unit">/ 250g box</span></p>
             
